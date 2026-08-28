@@ -3,6 +3,8 @@ import { useState } from "react";
 import axios from "axios";
 import "./App.css";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 function App() {
   const [isLogin, setIsLogin] = useState(false);
 
@@ -16,7 +18,7 @@ function App() {
     try {
       if (isLogin) {
         const response = await axios.post(
-          "http://localhost:5000/api/auth/login",
+          `${API_URL}/api/auth/login`,
           {
             email,
             password
@@ -39,7 +41,7 @@ function App() {
 
       } else {
         const response = await axios.post(
-          "http://localhost:5000/api/auth/register",
+          `${API_URL}/api/auth/register`,
           {
             name,
             email,

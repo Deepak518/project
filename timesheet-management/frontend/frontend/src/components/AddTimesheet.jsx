@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 function AddTimesheet({ onClose, onSuccess }) {
 
   const [formData, setFormData] = useState({
@@ -31,7 +33,7 @@ function AddTimesheet({ onClose, onSuccess }) {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "http://localhost:5000/api/timesheets",
+        `${API_URL}/api/timesheets`,
         formData,
         {
           headers: {
